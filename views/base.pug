@@ -1,0 +1,42 @@
+doctype html 
+html 
+  block head
+    head
+      link(rel='stylesheet', href='/css/style.css')
+      link(rel='shortcut icon', href='/img/favicon.png', type='image/png')
+      meta(charset='UTF-8') 
+      meta(name='viewport' content='width=device-width, initial-scale=1.0') 
+      link( href='https://fonts.googleapis.com/css?family=Lato:300,300i,700' rel='stylesheet')
+      
+      title Natours | #{title}
+      meta(http-equiv="Content-Security-Policy" content=" default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://checkout.paystack.com https://js.paystack.co; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://paystack.com/public/css/button.min.css; font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com; frame-src 'self' https://checkout.paystack.com; connect-src 'self' https://api.paystack.co https://*.paystack.co ws://127.0.0.1:52631 ws://localhost:3000;")
+
+
+
+
+      link(rel="stylesheet" href="/css/button.min.css")
+      //- meta(http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://js.paystack.co;")
+      //- meta(http-equiv="Content-Security-Policy" content="default-src 'self' https://checkout.paystack.com https://api.paystack.co;script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.paystack.co https://checkout.paystack.com;style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://paystack.com/public/css/button.min.css;font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com;frame-src 'self' https://checkout.paystack.com;connect-src 'self' https://api.paystack.co https://*.paystack.co;")
+
+
+  //- meta(http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' ws://127.0.0.1:53425; font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com;")
+  //- meta(http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.paystack.co; script-src-elem 'self' https://js.paystack.co;")
+
+  body 
+    // Header
+    include _header.pug
+    block Content
+
+
+
+    include _footer.pug
+    script(src='/js/axios.min.js')
+    script(src="https://js.paystack.co/v1/inline.js")
+    //- //- script(src='/js/mapbox.js')
+    //- script(src='/js/index.js')
+    //- script(type='module' src='./js/bundle.js')
+script(src='/js/bundle.js')
+
+
+
+
