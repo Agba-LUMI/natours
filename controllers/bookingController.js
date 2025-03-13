@@ -45,7 +45,6 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
         },
       }
     );
-    console.log(req.query);
 
     return res.status(200).json({
       status: "success",
@@ -53,7 +52,6 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
       data: { ...response.data.data, amount: amountInKobo / 100 },
     });
   } catch (error) {
-    console.error("Paystack Error:", error.response?.data || error.message);
     return res.status(500).json({
       status: "error",
       message: error.response?.data?.message || "Payment process failed",

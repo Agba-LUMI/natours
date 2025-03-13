@@ -43,8 +43,6 @@ exports.updateUserData = catchAsync(async (req, res, next) => {
     title: "Your Account",
     user: updatedUser,
   });
-
-  console.log("updating", req.body);
 });
 exports.getMyTours = catchAsync(async (req, res, next) => {
   const bookings = await Booking.find({ user: req.user.id });

@@ -17,7 +17,7 @@ mongoose
     useUnifiedTopology: true,
   })
   .then((con) => {
-    console.log("DB connection successful!");
+    // console.log("DB connection successful!");
   });
 const tours = JSON.parse(fs.readFileSync(`${__dirname}/tours.json`, "utf-8"));
 const users = JSON.parse(fs.readFileSync(`${__dirname}/users.json`, "utf-8"));
@@ -29,10 +29,10 @@ const importData = async () => {
     await Tour.create(tours);
     await User.create(users, { validateBeforeSave: false });
     await Review.create(reviews, { validateBeforeSave: false });
-    console.log("Data successfully loaded to the database");
+    // console.log("Data successfully loaded to the database");
     process.exit();
   } catch (err) {
-    console.log(err);
+    // console.log(err);
   }
 };
 const deleteData = async () => {
@@ -43,7 +43,7 @@ const deleteData = async () => {
     console.log("Data successfully deleted");
     process.exit();
   } catch (err) {
-    console.log(err);
+    // console.log(err);
   }
 };
 if (process.argv[2] === "--import") {

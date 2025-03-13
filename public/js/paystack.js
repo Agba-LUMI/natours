@@ -8,7 +8,6 @@ export const bookTour = async (tourId, navigate) => {
     const session = await axios.get(
       `http://127.0.0.1:3000/api/v1/bookings/checkout-session/${tourId}`
     );
-    console.log(session);
 
     // 2) Initialize Paystack payment
     const handler = PaystackPop.setup({
@@ -18,11 +17,6 @@ export const bookTour = async (tourId, navigate) => {
       currency: "NGN",
       ref: session.data.data.reference, // Use transaction reference from API
       callback: async function (response) {
-        console.log(
-          "Payment successful! Transaction ref:",
-          response.reference,
-          response
-        );
         if (response.status === "success") {
           showAlert("success", "Purchased successfully");
 
@@ -45,7 +39,6 @@ export const bookTour = async (tourId, navigate) => {
         // 3) Verify payment with backend
       },
       onClose: function () {
-        console.log("Payment window closed.");
         navigate("/payment-cancelled"); // Redirect if user closes payment window
       },
     });

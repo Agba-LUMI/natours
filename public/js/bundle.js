@@ -24648,8 +24648,6 @@ var bookTour = exports.bookTour = /*#__PURE__*/function () {
           return _axios.default.get("http://127.0.0.1:3000/api/v1/bookings/checkout-session/".concat(tourId));
         case 3:
           session = _context2.sent;
-          console.log(session);
-
           // 2) Initialize Paystack payment
           handler = PaystackPop.setup({
             key: "pk_test_631fad6b46bc87bc616ab813191a53f65df63fb9",
@@ -24667,7 +24665,6 @@ var bookTour = exports.bookTour = /*#__PURE__*/function () {
                 return _regeneratorRuntime().wrap(function _callee$(_context) {
                   while (1) switch (_context.prev = _context.next) {
                     case 0:
-                      console.log("Payment successful! Transaction ref:", response.reference, response);
                       if (response.status === "success") {
                         (0, _alerts.showAlert)("success", "Purchased successfully");
                         removeQueryParam = function removeQueryParam(redirectUrl, paramToRemove) {
@@ -24686,7 +24683,7 @@ var bookTour = exports.bookTour = /*#__PURE__*/function () {
                       }
 
                       // 3) Verify payment with backend
-                    case 2:
+                    case 1:
                     case "end":
                       return _context.stop();
                   }
@@ -24698,22 +24695,21 @@ var bookTour = exports.bookTour = /*#__PURE__*/function () {
               return callback;
             }(),
             onClose: function onClose() {
-              console.log("Payment window closed.");
               navigate("/payment-cancelled"); // Redirect if user closes payment window
             }
           });
           handler.openIframe();
-          _context2.next = 12;
+          _context2.next = 11;
           break;
-        case 9:
-          _context2.prev = 9;
+        case 8:
+          _context2.prev = 8;
           _context2.t0 = _context2["catch"](0);
           console.error("Error initializing payment:", _context2.t0);
-        case 12:
+        case 11:
         case "end":
           return _context2.stop();
       }
-    }, _callee2, null, [[0, 9]]);
+    }, _callee2, null, [[0, 8]]);
   }));
   return function bookTour(_x, _x2) {
     return _ref.apply(this, arguments);

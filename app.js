@@ -13,6 +13,7 @@ const reviewRouter = require("./routes/reviewRouter");
 const hpp = require("hpp");
 const viewsRouter = require("./routes/viewsRouter");
 const cookieParser = require("cookie-parser");
+const compression = require("compression");
 
 const globalErrorHandler = require("./controllers/errorHandler");
 
@@ -83,6 +84,7 @@ app.use(
   })
 );
 app.use(morgan("dev"));
+app.use(compression());
 
 const limit = rateLimit({
   windowMs: 5 * 60 * 1000,
@@ -91,7 +93,7 @@ const limit = rateLimit({
 });
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
-  // console.log(req.cookies);
+
   next();
 });
 app.use("/api", limit);
