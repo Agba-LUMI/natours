@@ -6,7 +6,7 @@ export const updateUserData = async (name, email, photo) => {
   try {
     const res = await axios({
       method: "PATCH",
-      url: "http://127.0.0.1:3000/api/v1/users/updateMe",
+      url: "/api/v1/users/updateMe",
       data: {
         name,
         email,
@@ -38,7 +38,7 @@ export const updateUserPassword = async (
   try {
     const res = await axios({
       method: "PUT",
-      url: "http://127.0.0.1:3000/api/v1/users/updateMyPassword",
+      url: "/api/v1/users/updateMyPassword",
       data: {
         passwordCurrent,
         password,

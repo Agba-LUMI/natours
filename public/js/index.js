@@ -3,14 +3,16 @@ import "core-js/stable";
 import "regenerator-runtime/runtime";
 import { updateUserData, updateUserPassword } from "./updateSetting";
 import { bookTour } from "./paystack";
+import { signUp } from "./signup";
 
 import { login, logout } from "./login";
 const updateUserPasswordForm = document.querySelector(".form-user-password");
-
-const loginForm = document.querySelector(".form--login");
+const signUpForm = document.querySelector(".form--signedUp");
+const loginForm = document.querySelector(".form--loggedIn");
 const updateUserDataForm = document.querySelector(".form-user-data");
 const logOutBtn = document.querySelector(".nav__el--logout");
 const bookBtn = document.querySelector("#book-tour");
+// Login Initialization
 if (loginForm) {
   loginForm.addEventListener("submit", function (e) {
     e.preventDefault();
@@ -19,6 +21,18 @@ if (loginForm) {
     login(email, password);
   });
 }
+// Sign up initialization
+if (signUpForm) {
+  signUpForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const passwordConfirm = document.getElementById("passwordConfirm").value;
+    signUp(name, email, password, passwordConfirm);
+  });
+}
+// Log out Initiliazation
 if (logOutBtn) logOutBtn.addEventListener("click", logout);
 if (updateUserDataForm)
   updateUserDataForm.addEventListener("submit", (e) => {
@@ -28,6 +42,8 @@ if (updateUserDataForm)
     const photo = document.getElementById("photo").files[0];
     updateUserData(name, email, photo);
   });
+
+// User to update password
 if (updateUserPasswordForm) {
   updateUserPasswordForm.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -42,6 +58,8 @@ if (updateUserPasswordForm) {
     document.querySelector(".btn-save-password").innerHTML = "Save password";
   });
 }
+
+// The Booking Initialization
 
 if (bookBtn) {
   bookBtn.addEventListener("click", (e) => {
