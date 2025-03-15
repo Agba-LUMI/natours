@@ -50,7 +50,7 @@ app.use(
         fontSrc: ["'self'", "https://fonts.gstatic.com", "data:"],
         connectSrc: [
           "'self'",
-          "ws://127.0.0.1:*",
+          "ws://0.0.0.0:*",
           "wss://*",
           "https://api.paystack.co",
         ],
