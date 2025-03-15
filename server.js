@@ -30,3 +30,24 @@ process.on("unhandledRejection", (err) => {
     process.exit(1);
   });
 });
+
+// Handle SIGTERM
+process.on("SIGTERM", async () => {
+  console.log("SIGTERM received. Cleaning up...");
+
+  // Close database connection
+  await mongoose.connection.close();
+  console.log("Database connection closed.");
+
+  // Close server gracefully
+  server.close(() => {
+    console.log("HTTP server closed.");
+    process.exit(0);
+  });
+
+  // Force exit if cleanup takes too long
+  setTimeout(() => {
+    console.error("Forced shutdown due to timeout.");
+    process.exit(1);
+  }, 5000);
+});

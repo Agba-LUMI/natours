@@ -85,6 +85,7 @@ app.use(
 );
 app.use(morgan("dev"));
 app.use(compression());
+app.enable("trust proxy");
 
 const limit = rateLimit({
   windowMs: 5 * 60 * 1000,
