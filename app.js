@@ -14,6 +14,7 @@ const hpp = require("hpp");
 const viewsRouter = require("./routes/viewsRouter");
 const cookieParser = require("cookie-parser");
 const compression = require("compression");
+const cors = require("cors");
 
 const globalErrorHandler = require("./controllers/errorHandler");
 
@@ -21,6 +22,9 @@ const app = express();
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
+app.use(cors());
+app.options("*", cors());
+// app.use(cors({origin: "https://natours.com"}))
 
 // Use Helmet to set security-related HTTP headers
 app.use(
