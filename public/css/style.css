@@ -1109,6 +1109,26 @@ body {
   
   
 }
+@media  screen and (max-width: 100rem) {
+  .card-container {
+    gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .card-container .card {
+    overflow: visible;
+  }
+  .main{
+    padding: 4rem 0;
+  }
+  .header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+
+  }
+  
+  
+}
 .card {
   border-radius: 3px;
   overflow: hidden;
